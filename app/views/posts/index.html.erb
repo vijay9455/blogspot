@@ -1,0 +1,47 @@
+<div align="center"><h1>Listing posts</h1></div>
+<div align="center">
+<table>
+  <tr>
+ <h3><th>Name</th></h3>
+ <h3><th>Title</th></h3>
+ <h3><th>Content</th></h3>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+  </table>
+  </div>
+
+<% @posts.each do |post| %>
+<h1>post</h1>
+  <div align="center">
+  <table>
+  <tr>
+    <td><%= post.name %></td>
+    <td><%= post.title %></td>
+    <td><%= post.content %></td>
+    <td><%= link_to 'Edit', edit_post_path(post) %></td>
+    <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'comment', post %></td>
+    </div>
+  </tr>
+  </table>
+  </div>
+    <h2>Comments</h2>
+    <% post.comments.each do |comment| %>
+      <p>
+        <b>Commenter:</b>
+        <%= comment.commenter %>
+      </p>
+     
+      <p>
+        <b>Comment:</b>
+        <%= comment.body %>
+      </p>
+      <%= link_to 'Destroy comment', [post,comment],data: { confirm: 'Are you sure?'},method:  :delete %>
+    <% end %>
+<% end %>
+
+<br />
+
+<%= link_to 'New Post', new_post_path %>

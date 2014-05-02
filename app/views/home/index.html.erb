@@ -1,0 +1,21 @@
+<h1>Welcome to blogspot</h1>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Title</th>
+    <th>Content</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @posts.each do |post| %>
+  <tr>
+    <td><%= post.name %></td>
+    <td><%= post.title %></td>
+    <td><%= post.content %></td>
+  
+  </tr>
+<% end %>
+</table>
+<%= link_to "Add/edit a content" , posts_path %>
